@@ -9,7 +9,7 @@ COMMANDS = {
   "Key Repeat Time" => "defaults write -g KeyRepeat -int 2",
   "Hide the dock" => "defaults write com.apple.Dock autohide-delay -float 0 && killall Dock",
   "XCode tools" => "xcode-select --install",
-  "Homebrew" => "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install) && echo 'export PATH=\"/usr/local/bin:$PATH\"' >> ~/.bash_profile && brew doctor",
+  "Homebrew" => "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\" && echo 'export PATH=\"/usr/local/bin:$PATH\"' >> ~/.bash_profile && brew doctor",
   "Git" => "brew install git \
   && git config --global user.name \"#{USER_NAME}\" \
   && git config --global user.email \"#{USER_MAIL}\"\
@@ -17,7 +17,6 @@ COMMANDS = {
   "iTerm2" => "brew cask install iterm2",
   "Google Chrome" => "brew cask install google-chrome",
   "Neovim" => "brew install neovim/neovim/neovim",
-
 }
 
 RESET   = "\033[0m"
