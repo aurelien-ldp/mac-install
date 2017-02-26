@@ -9,6 +9,7 @@ COMMANDS = {
   "Key Repeat Time" => "defaults write -g KeyRepeat -int 2",
   "Hide the dock" => "defaults write com.apple.Dock autohide-delay -float 0 && killall Dock",
   "XCode tools" => "xcode-select --install",
+  "Oh my zsh" => "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"",
   "Homebrew" => "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\" && echo 'export PATH=\"/usr/local/bin:$PATH\"' >> ~/.bash_profile && brew doctor",
   "Git" => "brew install git \
   && git config --global user.name \"#{USER_NAME}\" \
@@ -18,9 +19,6 @@ COMMANDS = {
   "Google Chrome" => "brew cask install google-chrome",
   "Neovim" => "brew install neovim/neovim/neovim",
   "RVM" => "curl -L https://get.rvm.io | bash -s stable --ruby",
-  "Polymail" => "brew cask install polymail",
-  "Nax's dotfiles" => "git clone https://github.com/Nax/dotfiles.git $HOME/.dotfiles \
-  && $HOME/.dotfiles/bin/dotfiles install zsh",
 }
 
 RESET   = "\033[0m"
@@ -52,4 +50,3 @@ COMMANDS.each do |k, v|
   puts ; puts
   install_command v
 end
-
