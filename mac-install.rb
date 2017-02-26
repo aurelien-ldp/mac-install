@@ -17,6 +17,10 @@ COMMANDS = {
   "iTerm2" => "brew cask install iterm2",
   "Google Chrome" => "brew cask install google-chrome",
   "Neovim" => "brew install neovim/neovim/neovim",
+  "RVM" => "curl -L https://get.rvm.io | bash -s stable --ruby",
+  "Polymail" => "brew cask install polymail",
+  "Nax's dotfiles" => "git clone https://github.com/Nax/dotfiles.git $HOME/.dotfiles \
+  && $HOME/.dotfiles/bin/dotfiles install zsh",
 }
 
 RESET   = "\033[0m"
