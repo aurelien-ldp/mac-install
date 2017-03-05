@@ -1,2 +1,2 @@
 # mac-install
-Script for automatically install my mac development environnement. WIP.
+Script for installing automatically my mac development environnement. WIP.
