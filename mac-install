@@ -1,36 +1,51 @@
-puts "macinstall version 0.1"
+#!/usr/bin/env ruby
 
-USER_NAME = "Aurelien Louis Dit Picard"
-USER_MAIL = "aurelien.ldp@gmail.com"
+RESET   = "\033[0m"
+RED     = "\033[31m"
+GREEN   = "\033[32m"
+YELLOW  = "\033[33m"
+BLUE    = "\033[34m"
+
+puts "macinstall version 0.1"
+puts RED + "⚠️ Please back up your system before using this script." + RESET
+sleep 2
+
+if (ARGV.length < 2)
+  puts "Usage: mac-install name email"
+  abort
+end
+
+USER_NAME = ARGV[0]
+USER_MAIL = ARGV[1]
 
 COMMANDS = {
   "Software Updates" => "sudo softwareupdate -ia",
-  "Initial Key Repeat Time" => "defaults write -g InitialKeyRepeat -int 10",
-  "Key Repeat Time" => "defaults write -g KeyRepeat -int 2",
-  "Hide the dock" => "defaults write com.apple.Dock autohide-delay -float 0 && killall Dock",
   "XCode tools" => "xcode-select --install",
-  "Oh my zsh" => "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"",
   "Homebrew" => "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\" && echo 'export PATH=\"/usr/local/bin:$PATH\"' >> ~/.bash_profile && brew doctor",
   "Git" => "brew install git \
   && git config --global user.name \"#{USER_NAME}\" \
   && git config --global user.email \"#{USER_MAIL}\"\
   && git config --global credential.helper osxkeychain",
   "iTerm2" => "brew cask install iterm2",
+  "Nax's dotfiles fork" => "git clone https://github.com/aurelien-ldp/dotfiles.git ~/.dotfiles \
+  && ~/.dotfiles/bin/dotfiles install -a",
   "Google Chrome" => "brew cask install google-chrome",
   "Neovim" => "brew install neovim/neovim/neovim",
   "RVM" => "curl -L https://get.rvm.io | bash -s stable --ruby",
+  "GPG Suite" => "brew cask install gpgtools",
+  "Atom" => "brew cask install atom",
+  "Transmission" => "brew cask install transmission",
+  "⚠️ WARNING - MacOS configuration derived from: https://github.com/mathiasbynens/dotfiles/blob/master/.macos\
+  ⚠ Can modify a lot of settings, please review it before using it.\
+  You can execute it after by running the command above." => "sh macos-config",
+  "Reboot" => "sudo shutdown -r now",
 }
-
-RESET   = "\033[0m"
-GREEN   = "\033[32m"
-YELLOW  = "\033[33m"
-BLUE    = "\033[34m"
 
 def ok?(command)
   puts "Command: " + command
   print "Is that ok? [Yn] "
-  ok = gets
-  return ok =~ /^$/
+  ok = $stdin.gets
+  return ok =~ /^[Yy]$|^$/
 end
 
 def install_command(command)
