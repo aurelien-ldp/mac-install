@@ -37,7 +37,7 @@ COMMANDS = {
   "Transmission" => "brew cask install transmission",
   "⚠️ WARNING - MacOS configuration derived from: https://github.com/mathiasbynens/dotfiles/blob/master/.macos\
   ⚠ Can modify a lot of settings, please review it before using it.\
-  You can execute it after by running the command above." => "sh macos-config",
+  You can execute it after by running the command below." => "sh macos-config",
   "Reboot" => "sudo shutdown -r now",
 }
 
