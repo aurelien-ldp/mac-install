@@ -6,19 +6,20 @@ GREEN   = "\033[32m"
 YELLOW  = "\033[33m"
 BLUE    = "\033[34m"
 
-puts "macinstall version 0.1"
-puts RED + "⚠️ Please back up your system before using this script." + RESET
-sleep 2
-
 if (ARGV.length < 2)
   puts "Usage: mac-install name email"
   abort
 end
 
+puts "macinstall version 0.1"
+puts RED + "⚠️ Please back up your system before using this script." + RESET
+sleep 2
+
 USER_NAME = ARGV[0]
 USER_MAIL = ARGV[1]
 
 COMMANDS = {
+  "Switching to zsh" => "sudo chsh -s /bin/zsh $USER && reset",
   "Software Updates" => "sudo softwareupdate -ia",
   "XCode tools" => "xcode-select --install",
   "Homebrew" => "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\" && echo 'export PATH=\"/usr/local/bin:$PATH\"' >> ~/.bash_profile && brew doctor",
@@ -27,6 +28,7 @@ COMMANDS = {
   && git config --global user.email \"#{USER_MAIL}\"\
   && git config --global credential.helper osxkeychain",
   "iTerm2" => "brew cask install iterm2",
+  "Tmux" => "brew install tmux",
   "Nax's dotfiles fork" => "git clone https://github.com/aurelien-ldp/dotfiles.git ~/.dotfiles \
   && ~/.dotfiles/bin/dotfiles install -a",
   "Google Chrome" => "brew cask install google-chrome",
