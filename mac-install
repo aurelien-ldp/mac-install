@@ -33,6 +33,7 @@ COMMANDS = {
   && ~/.dotfiles/bin/dotfiles install -a",
   "Google Chrome" => "brew cask install google-chrome",
   "Neovim" => "brew install neovim/neovim/neovim",
+  "Most" => "brew install most",
   "RVM" => "curl -L https://get.rvm.io | bash -s stable --ruby",
   "GPG Suite" => "brew cask install gpgtools",
   "Atom" => "brew cask install atom",
